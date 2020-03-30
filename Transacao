@@ -1,0 +1,67 @@
+package bradesco;
+import java.util.Scanner;
+public class Transacao {
+    Scanner in = new Scanner (System.in);
+    ContaCorrente Corrente = new ContaCorrente();
+    ContaPoupanca Poupanca = new ContaPoupanca();
+    Depositar depositar = new Depositar();
+    Sacar sacar = new Sacar();
+    private int transacoes;
+    private int option;
+    private double money;
+    
+    private void dados() {
+        System.out.println("O que deseja?");
+        System.out.println("\n 1) Depositar na conta-corrente");
+        System.out.println(" 2) Sacar da conta-corrente");
+        System.out.println(" 3) Depositar na conta-poupança");
+        System.out.println(" 4) Sacar da conta-poupança");
+        System.out.println(" 5) Gerar extrato da conta-corrente");
+        System.out.println(" 6) Gerar extrato da conta-poupança");
+        System.out.print("\nQual opção? ");
+        option = in.nextInt();
+        switch(option) {
+            case 1: {
+                try {
+                    System.out.println("\nVerificando rede...");
+                    Thread.sleep(3500);
+                    System.out.println("Verificando credenciais...");
+                    Thread.sleep(3500);
+                    System.out.print("Quanto deseja depositar? ");
+                    money = in.nextDouble();
+                    depositar.setDinheiro(depositar.getDinheiro() + money);
+                    transacoes = depositar.getTransacoes();
+                    depositar.setTransacoes(transacoes + 1);
+                } catch (Exception e) {
+                    System.out.println(e);
+                }
+            }
+            break;
+            case 2:
+                try {
+                    System.out.println("\nVerificando rede...");
+                    Thread.sleep(3500);
+                    System.out.println("Verificando credenciais...");
+                    Thread.sleep(3500);
+                    System.out.print("Quanto deseja sacar? ");
+                    money = in.nextDouble();
+                    if(depositar.getDinheiro() < money) {
+                        System.out.println("Você não poderá sacar esta quantia, seu saldo é de R$" + depositar.getDinheiro());
+                    }
+                    else {
+                        depositar.setDinheiro(depositar.getDinheiro() - money);
+                        transacoes = depositar.getTransacoes();
+                        depositar.setTransacoes(transacoes + 1);
+                    }
+                }
+                catch (Exception e) {
+                    System.out.println(e);
+                }
+            break;
+        }
+    }
+    
+    public void atenderCliente() {
+        dados();
+    }
+}
