@@ -1,0 +1,22 @@
+package bradesco;
+public class Sacar {
+    private double dinheiro = 0;
+    private int transacoes = 0;
+
+    public double getDinheiro() {
+        return dinheiro;
+    }
+
+    public void setDinheiro(double dinheiro) {
+        this.dinheiro = dinheiro;
+    }
+
+    public int getTransacoes() {
+        return transacoes;
+    }
+
+    public void setTransacoes(int transacoes) {
+        this.transacoes = transacoes;
+    }
+    
+}
