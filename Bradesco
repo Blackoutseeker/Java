@@ -1,0 +1,45 @@
+package bradesco;
+import java.util.Scanner;
+public class Bradesco {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        ContaCorrente Corrente = new ContaCorrente();
+        ContaPoupanca Poupanca = new ContaPoupanca();
+        Transacao processo = new Transacao();
+        Cliente client = new Cliente();
+        String confirm;
+        String nome;
+        String senha;
+        do {
+            input.nextLine();
+            System.out.println("Bem-vindo(a) ao Bradesco!");
+            System.out.print("\nDigite seu nome completo: ");
+            nome = input.nextLine();
+            if(!nome.equals(client.getNome())) {
+                System.out.println("Você ainda não possui uma conta, cadastre-se agora");
+                System.out.print("\nDigite seu nome completo: ");
+                nome = input.nextLine();
+                client.setNome(nome);
+                System.out.print("\nDigite sua senha: ");
+                senha = input.nextLine();
+                client.setSenha(senha);
+                processo.atenderCliente();
+            }
+            else {
+                System.out.print("\nDigite sua senha: ");
+                senha = input.nextLine();
+                if(!senha.equals(client.getSenha())) {
+                    while(!senha.equals(client.getSenha())) {
+                        System.out.println("Senha incorreta!");
+                        System.out.print("\nDigite sua senha novamente: ");
+                        senha = input.nextLine();
+                    }
+                }
+                processo.atenderCliente();
+            }
+            System.out.print("\n\nDeseja realizar outra operação? (s/n): ");
+            confirm = input.next();
+        }
+        while(!confirm.equals("s") && !confirm.equals("S"));
+    }
+}
