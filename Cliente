@@ -1,0 +1,51 @@
+package bradesco;
+public class Cliente {
+    ContaCorrente Corrente = new ContaCorrente();
+    ContaPoupanca Poupanca = new ContaPoupanca();
+    private String nome;
+    private String senha;
+    private int transacoes = Corrente.getTrasacoes() + Poupanca.getTransacoes();
+    private double poupanca = Poupanca.getDinheiro();
+    private double corrente = Corrente.getDinheiro();
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public int getTransacoes() {
+        return transacoes;
+    }
+
+    public void setTransacoes(int transacoes) {
+        this.transacoes = transacoes;
+    }
+
+    public double getPoupanca() {
+        return poupanca;
+    }
+
+    public void setPoupanca(double poupanca) {
+        this.poupanca = poupanca;
+    }
+
+    public double getCorrente() {
+        return corrente;
+    }
+
+    public void setCorrente(double corrente) {
+        this.corrente = corrente;
+    }
+    
+}
